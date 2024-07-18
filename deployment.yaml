@@ -1,0 +1,38 @@
+# This file defines a Kubernetes Deployment
+apiVersion: apps/v1  # Specifies the API version for Kubernetes resources
+kind: Deployment     # Indicates that this is a Deployment resource
+metadata:
+  name: fastapi-app  # Name of the Deployment
+  labels:
+    app: fastapi-app # Label to identify this Deployment
+spec:
+  replicas: 3        # Number of identical pods to run
+
+  # Selector defines how the Deployment finds which Pods to manage
+  selector:
+    matchLabels:
+      app: fastapi-app
+
+  # Template for creating new Pods
+  template:
+    metadata:
+      labels:
+        app: fastapi-app  # Label applied to Pods created by this Deployment
+    spec:
+      containers:
+      - name: fastapi-app  # Name of the container within the Pod
+        image: liteobject/my-fast-api:latest  # Docker image to use (replace with your actual image)
+        ports:
+        - containerPort: 8000  # Port the container exposes
+        
+        # Resource requirements and limits for the container
+        resources:
+          limits:
+            cpu: "500m"    # Maximum CPU usage (500 milliCPU = 0.5 CPU)
+            memory: "512Mi" # Maximum memory usage (512 Mebibytes)
+          requests:
+            cpu: "250m"    # Minimum CPU requirement (250 milliCPU = 0.25 CPU)
+            memory: "256Mi" # Minimum memory requirement (256 Mebibytes)
+
+# Note: This Deployment will create and manage 3 Pods running your FastAPI application.
+# Each Pod will have one container using the specified Docker image and resource constraints.
