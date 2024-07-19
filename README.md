@@ -1,6 +1,6 @@
 # FastAPI Simple Application Setup Guide
 
-This guide will help you set up and run the FastAPI simple application.
+This guide will help you set up and run the demo FastAPI.
 
 ## Prerequisites
 
@@ -68,4 +68,23 @@ To make changes to the application, edit the `main.py` file. The server will aut
 ## Stopping the Application
 
 To stop the application, press `CTRL+C` in the terminal where it's running.
+
+---
+## Setup in docker
+### Create a docker image
+    docker build -t liteobject/my-fast-api .
+
+### Create a container using the image created in the previus step
+    docker run -p 8000:8000 liteobject/my-fast-api
+--- 
+## Setup in K8s cluster
+### Run pods by applying the deployment.yaml file
+    kubectl apply -f deployment.yaml
+### Access the FastAPI application from a browser, you'll need to:
+    kubectl apply -f service.yaml 
+   
+---
+### Run multiple commands together in PowerShell
+    docker build -t liteobject/my-fast-api . && docker push liteobject/my-fast-api:latest && kubectl rollout restart deployment/my-fastapi  
+
 

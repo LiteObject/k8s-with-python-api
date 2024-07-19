@@ -2,25 +2,25 @@
 apiVersion: apps/v1  # Specifies the API version for Kubernetes resources
 kind: Deployment     # Indicates that this is a Deployment resource
 metadata:
-  name: fastapi-app  # Name of the Deployment
+  name: my-fastapi   # Name of the Deployment
   labels:
-    app: fastapi-app # Label to identify this Deployment
+    app: my-fastapi  # Label to identify this Deployment
 spec:
   replicas: 3        # Number of identical pods to run
 
   # Selector defines how the Deployment finds which Pods to manage
   selector:
     matchLabels:
-      app: fastapi-app
+      app: my-fastapi
 
   # Template for creating new Pods
   template:
     metadata:
       labels:
-        app: fastapi-app  # Label applied to Pods created by this Deployment
+        app: my-fastapi  # Label applied to Pods created by this Deployment
     spec:
       containers:
-      - name: fastapi-app  # Name of the container within the Pod
+      - name: my-fastapi  # Name of the container within the Pod
         image: liteobject/my-fast-api:latest  # Docker image to use (replace with your actual image)
         ports:
         - containerPort: 8000  # Port the container exposes

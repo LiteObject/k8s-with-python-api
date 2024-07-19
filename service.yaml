@@ -5,12 +5,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: fastapi-app-service
+  name: my-fastapi-service
 spec:
   # This selector is used to match this service to a Deployment or 
   # other objects that define pods.
   selector:
-    app: fastapi-app
+    app: my-fastapi
   ports:
   # Each port definition has a unique name, which can be useful 
   # for labeling and identifying purposes.
