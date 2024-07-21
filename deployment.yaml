@@ -6,7 +6,7 @@ metadata:
   labels:
     app: my-fastapi  # Label to identify this Deployment
 spec:
-  replicas: 3        # Number of identical pods to run
+  replicas: 1        # Number of identical pods to run
 
   # Selector defines how the Deployment finds which Pods to manage
   selector:
