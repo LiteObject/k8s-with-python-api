@@ -1,10 +1,13 @@
-import json
+# main.py
+
 import logging
 from fastapi import Depends, FastAPI, Request
+from healthchecks import router as healthchecks_router
 import os
-import time
 import gc
 import logging_setup as ls;
+import asyncio
+from pydantic import BaseModel
 
 app = FastAPI(
     openapi=True,
@@ -15,8 +18,11 @@ app = FastAPI(
     openapi_tags=[
         {"name": "tests", "description": "Test-related endpoints"},
         {"name": "products", "description": "Product-related endpoints"},
+        {"name": "healthchecks", "description": "Healthcheck-related endpoints"}
     ],
 )
+
+app.include_router(healthchecks_router, prefix="/healthchecks")
 
 logger = ls.logger
 

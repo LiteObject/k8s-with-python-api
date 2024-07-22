@@ -87,4 +87,15 @@ To stop the application, press `CTRL+C` in the terminal where it's running.
 ### Run multiple commands together in PowerShell
     docker build -t liteobject/my-fast-api . && docker push liteobject/my-fast-api:latest && kubectl rollout restart deployment/my-fastapi  
 
+### Check logs
+Find the name of your deployment:
+
+    kubectl get deployment
+
+Check all logs from all the pods of the deployment:
+
+    kubectl logs deployment/<DEPLOYEMENT_NAME> -f
+
+
+
 
