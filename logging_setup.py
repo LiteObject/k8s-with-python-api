@@ -1,4 +1,5 @@
 # logging_setup.py
+
 import seqlog
 import json
 import logging
@@ -20,10 +21,10 @@ def handle_a_failure(e): # type: (requests.RequestException) -> None
 set_callback_on_failure(handle_a_failure)
 
 logger = logging.getLogger('my-fast-api')
-logger.setLevel(logging.INFO)
+logger.setLevel(logging.DEBUG)
 
 console_handler = logging.StreamHandler()
-console_handler.setLevel(logging.INFO)
+console_handler.setLevel(logging.DEBUG)
 
 formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 console_handler.setFormatter(formatter)

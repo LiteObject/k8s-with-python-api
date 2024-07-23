@@ -25,14 +25,15 @@ app = FastAPI(
 app.include_router(healthchecks_router, prefix="/healthchecks")
 
 logger = ls.logger
+logger.info("Logging setup is complete and working.")
 
 @app.get("/")
-def read_root(request: Request, logger: logging.Logger = Depends(lambda: logger)):
+def read_root(request: Request):
     logger.info(f"Request received: {request.url.path}")
     return {"Message": "Hello World!"}
 
 @app.get("/items/{item_id}", tags=["products"])
-def read_item(item_id: int, request: Request, logger: logging.Logger = Depends(lambda: logger)):
+def read_item(item_id: int, request: Request):
     logger.info(f"Received request for item_id: {item_id}, path: {request.url.path}")    
     return {"item_id": item_id}
 
