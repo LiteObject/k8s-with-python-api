@@ -34,5 +34,10 @@ spec:
             cpu: "250m"    # Minimum CPU requirement (250 milliCPU = 0.25 CPU)
             memory: "256Mi" # Minimum memory requirement (256 Mebibytes)
 
+        # Environment variables for the container
+        env:
+        - name: ENV
+          value: dev
+
 # Note: This Deployment will create and manage 3 Pods running your FastAPI application.
 # Each Pod will have one container using the specified Docker image and resource constraints.

@@ -5,9 +5,10 @@ from fastapi import Depends, FastAPI, Request
 from healthchecks import router as healthchecks_router
 import os
 import gc
-import logging_setup as ls;
+#import logging_setup as ls;
 import asyncio
 from pydantic import BaseModel
+import logging_setup  # Import the logging setup module directly
 
 app = FastAPI(
     openapi=True,
@@ -24,7 +25,8 @@ app = FastAPI(
 
 app.include_router(healthchecks_router, prefix="/healthchecks")
 
-logger = ls.logger
+# Set up the logger using the setup_logger function from logging_setup.py
+logger = logging_setup.setup_logger(__name__)
 logger.info("Logging setup is complete and working.")
 
 @app.get("/")
